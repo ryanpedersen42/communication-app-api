@@ -13,6 +13,10 @@ const handlePost = (req, res, db) => {
       posted: new Date()
     })
     .into('posts')
+    .returning('*')
+    .then(editor => {
+      res.json(editor[0]);
+    })
     .then(trx.commit)
     .catch(trx.rollback)
     })
