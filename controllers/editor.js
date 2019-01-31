@@ -10,7 +10,7 @@ const handlePost = (req, res, db) => {
       username: username,
       title: title,
       text: text, 
-      time: new Date()
+      posted: new Date()
     })
     .into('posts')
     .then(trx.commit)
