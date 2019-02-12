@@ -1,7 +1,7 @@
 const handlePost = (req, res, db) => {
   const { username, title, text } = req.body;
 
-  if (!username || !title || !text) {
+  if (!username || !title || !text ) {
     return res.status(400).json('incorrect form submission');
   }
 
@@ -10,6 +10,7 @@ const handlePost = (req, res, db) => {
       username: username,
       title: title,
       text: text, 
+      // upvotes: upvotes,
       posted: new Date()
     })
     .into('posts')
