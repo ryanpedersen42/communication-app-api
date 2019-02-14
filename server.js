@@ -9,6 +9,7 @@ const signin = require('./controllers/signin');
 const editor = require('./controllers/editor');
 const follow = require('./controllers/follow');
 const loadPosts = require('./controllers/loadPosts');
+const loadFollowingPosts = require('./controllers/loadFollowingPosts');
 
 const db = knex({
   client: 'pg',
@@ -32,6 +33,7 @@ app.post('/signin', (req, res) => { signin.handleSignIn(req, res, db, bcrypt) })
 app.post('/api/posts', (req, res) => { editor.handlePost(req,res, db) });
 app.post('/api/follow', (req, res) => { follow.handleFollow(req, res, db) });
 app.post('/api/loadPosts', (req, res) => { loadPosts.loadPosts(req, res, db) });
+app.post('/api/loadFollowingPosts', (req, res) => { loadFollowingPosts.loadFollowingPosts(req, res, db) });
 
 //confirming app is running on port 3000
 app.listen(3000, () => {

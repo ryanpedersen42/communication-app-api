@@ -2,14 +2,12 @@ const handleFollow = (req, res, db) => {
   const { username, following } = req.body;
 
   if (!username || !following ) {
-    return res.status(400).json('incorrect form submission');
+    return res.status(400).json(` ${req.body.username} ${req.body.following} in incorrect form submission`);
   }
 
   db.transaction(trx => {
     trx.insert({
-      //get this from the state
       username: username,
-      //get this from the post
       following: following
     })
     .into('following')
