@@ -10,7 +10,7 @@ const handlePost = (req, res, db) => {
       username: username,
       title: title,
       text: text, 
-      // upvotes: upvotes,
+      upvotes: 0,
       posted: new Date()
     })
     .into('posts')

@@ -17,7 +17,6 @@ const handleFollow = (req, res, db) => {
       }
     })
 
-
   const addNumber = (username, following) => {
     db.transaction(trx => {
       trx.insert({
@@ -25,6 +24,7 @@ const handleFollow = (req, res, db) => {
         following: following
       })
       .into('following')
+      // .returning(res.status(200).json('success'))
       .then(trx.commit)
       .catch(trx.rollback)
     })      
