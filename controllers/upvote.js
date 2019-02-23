@@ -10,17 +10,6 @@ const handleUpvote = (req, res, db) => {
     .then(trx.commit)
     .catch(trx.rollback)
   })
-
-
-
-  // db.transaction(trx => {
-  //   trx.increment('upvotes', 1)        
-  //   .from('posts')
-  //   .where('id', '=', id)
-  //   .then(trx.commit)
-  //   .catch(console.log(trx.rollback))
-  // })
-
 }
 
 module.exports = {

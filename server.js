@@ -11,6 +11,9 @@ const follow = require('./controllers/follow');
 const loadPosts = require('./controllers/loadPosts');
 const loadFollowingPosts = require('./controllers/loadFollowingPosts');
 const upvote = require('./controllers/upvote');
+const reply = require('./controllers/reply');
+const loadReplies = require('./controllers/loadReplies');
+const loadReplyPost = require('./controllers/loadReplyPost');
 
 const db = knex({
   client: 'pg',
@@ -36,6 +39,9 @@ app.post('/api/follow', (req, res) => { follow.handleFollow(req, res, db) });
 app.post('/api/loadPosts', (req, res) => { loadPosts.loadPosts(req, res, db) });
 app.post('/api/loadFollowingPosts', (req, res) => { loadFollowingPosts.loadFollowingPosts(req, res, db) });
 app.post('/api/upvote', (req, res) => { upvote.handleUpvote(req, res, db) });
+app.post('/api/loadReplies', (req, res) => { loadReplies.handleLoadReplies(req, res, db) });
+app.post('/api/loadReplyPost', (req, res) => {loadReplyPost.handleReplyPost(req, res, db) });
+app.post('/api/reply', (req, res) => { reply.handleReply(req, res, db) });
 
 //confirming app is running on port 3000
 app.listen(3000, () => {

@@ -18,7 +18,6 @@ const loadPosts = (req, res, db) => {
     }).catch(err => res.status(400).json('unable to find user'))
 }
 
-
 module.exports = {
   loadPosts: loadPosts
 }
