@@ -1,13 +1,13 @@
-const loadPosts = (req, res, db) => {
+const loadAllPosts = (req, res, db) => {
   const { username } = req.body;
   if (!username) {
     return res.status(400).json('something went wrong');
   }
-  db.select('title').from('posts')
+  db.select('*').from('posts')
+  .where('username', '!=', username)
   .then(responseData => {
     if (responseData.length > 1) {
       return db.select('*').from('posts')
-          .where('username', '=', username)
           .then(data => {
             res.json(data)
           })
@@ -19,5 +19,5 @@ const loadPosts = (req, res, db) => {
 }
 
 module.exports = {
-  loadPosts: loadPosts
+loadAllPosts: loadAllPosts
 }
